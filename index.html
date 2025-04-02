@@ -1,487 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+UuHn3IJoYbxQzV6E+ytS+RzKcnhzBWr0YbR5d2k1fyo+KHZ9rxq4l9cRW0rz8SeytN4+8QIkDHzZ0qWxK8Rw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ReeMotedly | Remote IT Services for Cloud & Cybersecurity</title>
-  <meta name="description" content="ReeMotedly provides expert IT managed services, remote cloud workload management, cybersecurity, and web development. Available 24/7 worldwide.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-  /* Background Video Styling */
-  .background-video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-  }
-  
-  #background-video {
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-  }
-  
-  .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(10, 10, 10, 0.7);
-  }
-  
-  /* Existing styles */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: rgba(15, 23, 42, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    z-index: 10000;
-    border-bottom: 1px solid #1e293b;
-  }
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .logo-container img {
-    height: 40px;
-  }
-  .logo-container span {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #38bdf8;
-  }
-  .menu-toggle {
-    display: none;
-    font-size: 1.8rem;
-    color: #e2e8f0;
-    cursor: pointer;
-  }
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    align-items: center;
-  }
-  nav ul li {
-    position: relative;
-  }
-  nav ul li a,
-  nav ul li span {
-    text-decoration: none;
-    color: #e2e8f0;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-    cursor: pointer;
-  }
-  nav ul li a:hover,
-  nav ul li span:hover {
-    color: #38bdf8;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #1e293b;
-    min-width: 220px;
-    border-radius: 6px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 9999;
-  }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown-content a {
-    display: block;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #e2e8f0;
-    font-size: 1rem;
-    white-space: nowrap;
-  }
-  .dropdown-content a:hover {
-    background-color: #334155;
-  }
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
-    nav ul {
-      flex-direction: column;
-      gap: 10px;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background-color: #0f172a;
-      display: none;
-      padding: 20px 0;
-    }
-    nav ul.show {
-      display: flex;
-    }
-    .dropdown-content {
-      position: static;
-      box-shadow: none;
-      background-color: transparent;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-  body {
-    background-color: transparent; /* Changed to transparent to show video */
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    transition: background 0.3s, color 0.3s;
-  }
-  section {
-    padding: 100px 20px;
-    min-height: 100vh;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-  section:nth-child(even) {
-    background-color: rgba(18, 18, 18, 0.7); /* Semi-transparent background */
-  }
-  section:nth-child(odd) {
-    background-color: rgba(10, 10, 10, 0.7); /* Semi-transparent background */
-  }
-  h1 {
-    font-size: 4.5rem;
-    color: #38bdf8;
-    margin-bottom: 20px;
-  }
-  h2 {
-    font-size: 3rem;
-    color: #38bdf8;
-    margin-bottom: 20px;
-  }
-  p {
-    font-size: 1.5rem;
-    max-width: 900px;
-    color: #ffffff;
-    line-height: 2;
-  }
-  .btn {
-    margin-top: 30px;
-    padding: 15px 30px;
-    background-color: #38bdf8;
-    color: #0f172a;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-  }
-  .btn:hover {
-    background-color: #0ea5e9;
-  }
-  footer {
-    padding: 100px 30px;
-    text-align: center;
-    color: #64748b;
-    font-size: 1rem;
-    background-color: rgba(15, 23, 42, 0.9);
-    position: relative;
-    z-index: 1;
-  }
-  body.light .video-overlay {
-    background-color: rgba(244, 244, 244, 0.8);
-  }
-  body.light section:nth-child(even) {
-    background-color: rgba(226, 232, 240, 0.7);
-  }
-  body.light section:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.7);
-  }
-  body.light p, body.light ul, body.light li {
-    color: #1e293b;
-  }
-  /* Scroll Progress Bar */
-  #progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: #38bdf8;
-    z-index: 9999;
-  }
-  /* Scroll Prompt */
-  .scroll-prompt {
-    position: absolute;
-    bottom: 20px;
-    font-size: 1rem;
-    color: #94a3b8;
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p+UuHn3IJoYbxQzV6E+ytS+RzKcnhzBWr0YbR5d2k1fyo+KHZ9rxq4l9cRW0rz8SeytN4+8QIkDHzZ0qWxK8Rw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReeMotedly | Remote IT Services for Cloud & Cybersecurity</title>
+    <meta name="description" content="ReeMotedly provides expert IT managed services, remote cloud workload management, cybersecurity, and web development. Available 24/7 worldwide.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+        /* Background Video Styling */
+        .background-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-  /* Video controls styling */
-  .video-controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    background-color: rgba(15, 23, 42, 0.7);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    transition: all 0.3s ease;
-  }
-  .video-controls:hover {
-    background-color: rgba(15, 23, 42, 0.9);
-  }
-  .video-controls i {
-    color: #e2e8f0;
-    font-size: 1.2rem;
-  }
-</style>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+        #background-video {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.7);
+        }
+
+        /* Existing styles */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; /* Reduced padding for smaller screens */
+            z-index: 10000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 40px;
+        }
+
+        .logo-container span {
+            font-size: 1.2rem; /* Reduced font size for smaller screens */
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #e2e8f0;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px; /* Reduced gap for smaller screens */
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a,
+        nav ul li span {
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 1rem; /* Reduced font size for smaller screens */
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover,
+        nav ul li span:hover {
+            color: #38bdf8;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1e293b;
+            min-width: 200px; /* Reduced min-width for smaller screens */
+            border-radius: 6px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px; /* Reduced padding for smaller screens */
+            text-decoration: none;
+            color: #e2e8f0;
+            font-size: 0.9rem; /* Reduced font size for smaller screens */
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #334155;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #0f172a;
+                display: none;
+                padding: 15px 0; /* Reduced padding for smaller screens */
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: transparent;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        section {
+            padding: 60px 20px; /* Reduced padding for smaller screens */
+            min-height: auto; /* Adjusted min-height for content */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        section:nth-child(even) {
+            background-color: rgba(18, 18, 18, 0.7);
+        }
+
+        section:nth-child(odd) {
+            background-color: rgba(10, 10, 10, 0.7);
+        }
+
+        h1 {
+            font-size: 3rem; /* Reduced font size for smaller screens */
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem; /* Reduced font size for smaller screens */
+            color: #38bdf8;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem; /* Reduced font size for smaller screens */
+            max-width: 900px;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        .btn {
+            margin-top: 20px; /* Reduced margin for smaller screens */
+            padding: 12px 25px; /* Reduced padding for smaller screens */
+            background-color: #38bdf8;
+            color: #0f172a;
+            font-size: 0.9rem; /* Reduced font size for smaller screens */
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0ea5e9;
+        }
+
+        footer {
+            padding: 60px 20px; /* Reduced padding for smaller screens */
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem; /* Reduced font size for smaller screens */
+            background-color: rgba(15, 23, 42, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        body.light .video-overlay {
+            background-color: rgba(244, 244, 244, 0.8);
+        }
+
+        body.light section:nth-child(even) {
+            background-color: rgba(226, 232, 240, 0.7);
+        }
+
+        body.light section:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        body.light p,
+        body.light ul,
+        body.light li {
+            color: #1e293b;
+        }
+
+        /* Scroll Progress Bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: #38bdf8;
+            z-index: 9999;
+        }
+
+        /* Scroll Prompt */
+        .scroll-prompt {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem; /* Reduced font size for smaller screens */
+            color: #94a3b8;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Video controls styling */
+        .video-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: rgba(15, 23, 42, 0.7);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .video-controls:hover {
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        .video-controls i {
+            color: #e2e8f0;
+            font-size: 1.2rem;
+        }
+    </style>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </head>
 <body class="dark">
-  <!-- Background Video Container -->
-  <div class="background-video-container">
-    <video autoplay muted loop id="background-video">
-      <source src="background.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="video-overlay"></div>
-  </div>
+    <div class="background-video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
 
-  <!-- Video Controls -->
-  <div class="video-controls" onclick="toggleVideo()">
-    <i class="fas fa-pause" id="video-control-icon"></i>
-  </div>
+    <div class="video-controls" onclick="toggleVideo()">
+        <i class="fas fa-pause" id="video-control-icon"></i>
+    </div>
 
-  <div id="theme-toggle" onclick="toggleTheme()" style="position: fixed; top: 10px; right: 20px; z-index: 10000; cursor: pointer; font-size: 1.2rem; color: #38bdf8;">
-    <i class="fas fa-moon"></i>
-  </div>
-  <div id="progress-bar"></div>
-  <nav data-aos="fade-down" data-aos-delay="100">
-  <div class="logo-container">
-    <img src="logo.jpg" alt="Logo" data-aos="fade-down" data-aos-delay="200" />
-    <span>ReeMotedly</span>
-  </div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <ul id="menu">
-    <li><a href="#home">Home</a></li>
-    <li class="dropdown">
-      <span>Services ▾</span>
-      <div class="dropdown-content">
-        <a href="#managed-it">Managed IT Services</a>
-        <a href="#cloud">Cloud Workload Management</a>
-        <a href="#on-prem">On-Premise Support</a>
-        <a href="#web-dev">Web Design & Development</a>
-        <a href="#cyber">Cybersecurity</a>
-        <a href="#digital">Digital Marketing</a>
-      </div>
-    </li>
-    <li class="dropdown">
-      <span>Partners ▾</span>
-      <div class="dropdown-content">
-        <a href="#partners">Our Partners</a>
-        <a href="https://avncomputers.com" target="_blank">AVN Computers - Al Ain</a>
-      </div>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <div id="theme-toggle" onclick="toggleTheme()" style="position: fixed; top: 10px; right: 20px; z-index: 10000; cursor: pointer; font-size: 1.2rem; color: #38bdf8;">
+        <i class="fas fa-moon"></i>
+    </div>
+    <div id="progress-bar"></div>
+    <nav data-aos="fade-down" data-aos-delay="100">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo" data-aos="fade-down" data-aos-delay="200" />
+            <span>ReeMotedly</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul id="menu">
+            <li><a href="#home">Home</a></li>
+            <li class="dropdown">
+                <span>Services ▾</span>
+                <div class="dropdown-content">
+                    <a href="#managed-it">Managed IT Services</a>
+                    <a href="#cloud">Cloud Workload Management</a>
+                    <a href="#on-prem">On-Premise Support</a>
+                    <a href="#web-dev">Web Design & Development</a>
+                    <a href="#cyber">Cybersecurity</a>
+                    <a href="#digital">Digital Marketing</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <span>Partners ▾</span>
+                <div class="dropdown-content">
+                    <a href="#partners">Our Partners</a>
+                    <a href="https://avncomputers.com" target="_blank">AVN Computers - Al Ain</a>
+                </div>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <section id="home">
-    <h1 data-aos="zoom-in" data-aos-delay="300">Welcome to ReeMotedly</h1>
-    <p style="font-size: 1.8rem; margin-top: 10px;">Your Trusted Partner for Remote IT Excellence</p>
-    <p style="margin-top: 40px; font-size: 1.3rem; max-width: 900px; line-height: 1.8;">
-      Remote IT support helps businesses reduce operational costs, improve response times, and eliminate the need for full-time in-house tech teams.
-      At <strong>ReeMotedly</strong>, our subject matter experts are available across global time zones to support your cloud, on-premise, and cybersecurity needs — around the clock.
-      It's fast, flexible, and cost-effective — just the way modern IT should be.
-    </p>
-    <a href="#contact" class="btn" data-aos="zoom-in-up" data-aos-delay="500">Get Started</a>
-  <div class="scroll-prompt">↓ Scroll to explore</div>
-<p style="margin-top: 20px; font-size: 1.2rem; color: #cbd5e1;">
-  For a free assessment tailored to your IT needs, click the button above.
-</p>
-    
-</section>
+    <section id="home">
+        <h1 data-aos="zoom-in" data-aos-delay="300">Welcome to ReeMotedly</h1>
+        <p style="font-size: 1.4rem; margin-top: 10px;">Your Trusted Partner for Remote IT Excellence</p>
+        <p style="margin-top: 30px; font-size: 1.1rem; max-width: 900px; line-height: 1.6;">
+            Remote IT support helps businesses reduce operational costs, improve response times, and eliminate the need for full-time in-house tech teams.
+            At <strong>ReeMotedly</strong>, our subject matter experts are available across global time zones to support your cloud, on-premise, and cybersecurity needs — around the clock.
+            It's fast, flexible, and cost-effective — just the way modern IT should be.
+        </p>
+        <a href="#contact" class="btn" data-aos="zoom-in-up" data-aos-delay="500">Get Started</a>
+        <div class="scroll-prompt">↓ Scroll to explore</div>
+        <p style="margin-top: 20px; font-size: 1rem; color: #cbd5e1;">
+            For a free assessment tailored to your IT needs, click the button above.
+        </p>
+    </section>
 
-  <section id="managed-it" >
-<img src="Managed Service.jpg" alt="Managed IT Service" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  
-  <h2>Managed IT Services</h2>
-  <p>We provide 24/7 monitoring, maintenance, and IT support. Let ReeMotedly manage your infrastructure, boost uptime, and resolve issues before they interrupt your business.</p>
-</section>
+    <section id="managed-it">
+        <img src="Managed Service.jpg" alt="Managed IT Service" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>Managed IT Services</h2>
+        <p>We provide 24/7 monitoring, maintenance, and IT support. Let ReeMotedly manage your infrastructure, boost uptime, and resolve issues before they interrupt your business.</p>
+    </section>
 
-<section id="cloud" >
-<img src="Cloud Workload.jpg" alt="Cloud Workload Management" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <h2>Cloud Workload Management</h2>
-  <p>Migrate and manage your applications seamlessly on AWS, Azure, or GCP. We help you reduce costs, scale flexibly, and ensure top-notch cloud performance.</p>
-</section>
+    <section id="cloud">
+        <img src="Cloud Workload.jpg" alt="Cloud Workload Management" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>Cloud Workload Management</h2>
+        <p>Migrate and manage your applications seamlessly on AWS, Azure, or GCP. We help you reduce costs, scale flexibly, and ensure top-notch cloud performance.</p>
+    </section>
 
-<section id="on-prem" data-aos="fade-right">
-<img src="On Premise.jpg" alt="On-Premise Support" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <h2>On-Premise Support</h2>
-  <p>From local server maintenance to secure networking, we deliver on-premise solutions that connect seamlessly with your cloud infrastructure.</p>
-</section>
+    <section id="on-prem" data-aos="fade-right">
+        <img src="On Premise.jpg" alt="On-Premise Support" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>On-Premise Support</h2>
+        <p>From local server maintenance to secure networking, we deliver on-premise solutions that connect seamlessly with your cloud infrastructure.</p>
+    </section>
 
-<section id="web-dev" data-aos="fade-left">
-<img src="Web Development.jpg" alt="Web Design & Development" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <h2>Web Design & Development</h2>
-  <p>Build a fast, beautiful, and responsive website that reflects your brand and converts leads into customers. Fully optimized and mobile-friendly.</p>
-</section>
+    <section id="web-dev" data-aos="fade-left">
+        <img src="Web Development.jpg" alt="Web Design & Development" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>Web Design & Development</h2>
+        <p>Build a fast, beautiful, and responsive website that reflects your brand and converts leads into customers. Fully optimized and mobile-friendly.</p>
+    </section>
 
-<section id="cyber" data-aos="fade-up">
-<img src="Cybersecurity.jpg" alt="Cybersecurity" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <h2>Cybersecurity</h2>
-  <p>Defend your business against cyber threats with 24/7 monitoring, firewalls, antivirus, employee training, and compliance tools — powered by ReeMotedly.</p>
-</section>
+    <section id="cyber" data-aos="fade-up">
+        <img src="Cybersecurity.jpg" alt="Cybersecurity" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>Cybersecurity</h2>
+        <p>Defend your business against cyber threats with 24/7 monitoring, firewalls, antivirus, employee training, and compliance tools — powered by ReeMotedly.</p>
+    </section>
 
-<section id="digital" data-aos="fade-up">
-<img src="Digital Marketing.jpg" alt="Digital Marketing" style="width: 160px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <h2>Digital Marketing</h2>
-  <p>Grow your online presence and reach the right audience with ReeMotedly's full-stack digital marketing solutions. From SEO and content marketing to paid advertising and analytics, we craft data-driven strategies that deliver real results.</p>
-</section>
+    <section id="digital" data-aos="fade-up">
+        <img src="Digital Marketing.jpg" alt="Digital Marketing" style="width: 120px; margin-bottom: 15px; border-radius: 50%; border: 3px solid #38bdf8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);">
+        <h2>Digital Marketing</h2>
+        <p>Grow your online presence and reach the right audience with ReeMotedly's full-stack digital marketing solutions. From SEO and content marketing to paid advertising and analytics, we craft data-driven strategies that deliver real results.</p>
+    </section>
 
-<!-- Why Choose Us Section -->
-<section id="why-us" data-aos="fade-up" data-aos="fade-up">
-  <h2>Why Choose ReeMotedly?</h2>
-  <ul style="list-style: none; padding: 0; font-size: 1.3rem; line-height: 2; color: #cbd5e1;">
-    <li>💡 Tailored IT solutions designed for your business needs</li>
-    <li>🛡️ Trusted Cybersecurity experts with real-time monitoring</li>
-    <li>🌐 24/7 support with a globally distributed team</li>
-    <li>💸 Cost-effective remote services that save you money</li>
-  </ul>
-</section>
+    <section id="why-us" data-aos="fade-up" data-aos="fade-up">
+        <h2>Why Choose ReeMotedly?</h2>
+        <ul style="list-style: none; padding: 0; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+            <li>💡 Tailored IT solutions designed for your business needs</li>
+            <li>🛡️ Trusted Cybersecurity experts with real-time monitoring</li>
+            <li>🌐 24/7 support with a globally distributed team</li>
+            <li>💸 Cost-effective remote services that save you money</li>
+        </ul>
+    </section>
 
-<!-- Testimonials Section -->
-<section id="testimonials" data-aos="fade-up" data-aos="fade-up">
-  <h2>What Our Clients Say</h2>
-  <blockquote style="font-style: italic; font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin: 30px auto;">
-    "ReeMotedly helped streamline our infrastructure and reduced downtime significantly. Highly recommended!"<br>
-    <span style="display: block; margin-top: 15px; font-weight: bold; color: #38bdf8;">– AVN Computers, Al Ain</span>
-  </blockquote>
-</section>
+    <section id="testimonials" data-aos="fade-up" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+        <blockquote style="font-style: italic; font-size: 1rem; color: #94a3b8; max-width: 700px; margin: 30px auto;">
+            "ReeMotedly helped streamline our infrastructure and reduced downtime significantly. Highly recommended!"<br>
+            <span style="display: block; margin-top: 15px; font-weight: bold; color: #38bdf8;">– AVN Computers, Al Ain</span>
+        </blockquote>
+    </section>
 
-<section id="partners" data-aos="fade-up" data-aos="zoom-in">
-  <h2>Our Partners</h2>
-  <ul style="list-style: none; padding: 0; font-size: 1.5rem;">
-    <li>AVN Computers - Al Ain</li>
-  </ul>
-</section>
+    <section id="partners" data-aos="fade-up" data-aos="zoom-in">
+        <h2>Our Partners</h2>
+        <ul style="list-style: none; padding: 0; font-size: 1.2rem;">
+            <li>AVN Computers - Al Ain</li>
+        </ul>
+    </section>
 
-  <section id="contact" data-aos="fade-up" data-aos="fade-up">
-  <h2>Contact Us</h2>
-  <p>Email: info@reemotedly.com<br>Phone: +91-95627-43587<br>Location: Remote Worldwide</p>
+    <section id="contact" data-aos="fade-up" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Email: info@reemotedly.com<br>Phone: +91-95627-43587<br>Location: Remote Worldwide</p>
 
-  <form style="margin-top: 30px; max-width: 500px; width: 100%;">
-    <input type="text" placeholder="Your Name" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:none;">
-    <input type="email" placeholder="Your Email" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:none;">
-    <textarea placeholder="Your Message" required rows="5" style="width:100%; padding:12px; margin-bottom:15px; border-radius:8px; border:none;"></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
+        <form style="margin-top: 30px; max-width: 500px; width: 100%;">
+            <input type="text" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 8px; border: none;">
+            <input type="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 8px; border: none;">
+            <textarea placeholder="Your Message" required rows="4" style="width: 100%; padding: 10px; margin-bottom: 12px; border-radius: 8px; border: none;"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
 
-  <div style="margin-top: 30px;">
-    <a href="https://wa.me/919562743587?text=Hi%20ReeMotedly!%20I%27m%20interested%20in%20your%20IT%20services." target="_blank" class="btn" style="margin-right: 10px;">Chat on WhatsApp</a>
-    <a href="https://calendly.com/your-username/15min" target="_blank" class="btn">Book a Call</a>
-  </div>
-</section>
+        <div style="margin-top: 30px;">
+            <a href="https://wa.me/919562743587?text=Hi%20ReeMotedly!%20I%27m%20interested%20in%20your%20IT%20services." target="_blank" class="btn" style="margin-right: 10px;">Chat on WhatsApp</a>
+            <a href="https://calendly.com/your-username/15min" target="_blank" class="btn">Book a Call</a>
+        </div>
+    </section>
 
-  <footer>
-    &copy; 2025 ReeMotedly. All rights reserved.<br />
-    <small>Website designed by ReeMotedly Web Team</small>
-  </footer>
+    <footer>
+        &copy; 2025 ReeMotedly. All rights reserved.<br />
+        <small>Website designed by ReeMotedly Web Team</small>
+    </footer>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("show");
-    }
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("show");
+        }
 
-    function toggleVideo() {
-      const video = document.getElementById('background-video');
-      const icon = document.getElementById('video-control-icon');
-      
-      if (video.paused) {
-        video.play();
-        icon.classList.remove('fa-play');
-        icon.classList.add('fa-pause');
-      } else {
-        video.pause();
-        icon.classList.remove('fa-pause');
-        icon.classList.add('fa-play');
-      }
-    }
-  </script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
-<script>
-  // Scroll Progress Bar
-  window.onscroll = function () {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
-    document.getElementById("progress-bar").style.width = scrolled + "%";
-  };
-</script>
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle('light');
-    document.body.classList.toggle('dark');
-    const icon = document.querySelector('#theme-toggle i');
-    if (document.body.classList.contains('light')) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    } else {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    }
-  }
-</script>
+        function toggleVideo() {
+            const video = document.getElementById('background-video');
+            const icon = document.getElementById('video-control-icon');
+
+            if (video.paused) {
+                video.play();
+                icon.classList.remove('fa-play');
+                icon.classList.add('fa-pause');
+            } else {
+                video.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+    <script>
+        // Scroll Progress Bar
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('#theme-toggle i');
+            if (document.body.classList.contains('light')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
