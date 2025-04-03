@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReeMotedly | Remote IT Services for Cloud & Cybersecurity</title>
+  <meta name="description" content="ReeMotedly provides expert IT managed services, remote cloud workload management, cybersecurity, and web development. Available 24/7 worldwide.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif;}
+    html {scroll-behavior: smooth;}
+    body {background: transparent; color: #fff; font-family: 'Inter', sans-serif;}
+    .background-video-container {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;}
+    #background-video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; object-fit: cover;}
+    .video-overlay {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 10, 10, 0.7);}
+    nav {position: fixed; top: 0; left: 0; width: 100%; height: 70px; background-color: rgba(15, 23, 42, 0.9); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; z-index: 10000; border-bottom: 1px solid #1e293b;}
+    .logo-container {display: flex; align-items: center; gap: 10px;}
+    .logo-container img {height: 40px;}
+    .logo-container span {font-size: 1.5rem; font-weight: 700; color: #38bdf8;}
+    .menu-toggle {display: none; font-size: 1.8rem; color: #e2e8f0; cursor: pointer;}
+    nav ul {list-style: none; display: flex; gap: 30px; align-items: center;}
+    nav ul li {position: relative;}
+    nav ul li a, nav ul li span {text-decoration: none; color: #e2e8f0; font-size: 1.1rem; transition: color 0.3s; cursor: pointer;}
+    nav ul li a:hover, nav ul li span:hover {color: #38bdf8;}
+    .dropdown-content {display: none; position: absolute; top: 100%; left: 0; background-color: #1e293b; min-width: 220px; border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 9999;}
+    .dropdown:hover .dropdown-content {display: block;}
+    .dropdown-content a {display: block; padding: 12px 20px; text-decoration: none; color: #e2e8f0; font-size: 1rem; white-space: nowrap;}
+    .dropdown-content a:hover {background-color: #334155;}
+    @media (max-width: 768px) {
+      .menu-toggle {display: block;}
+      nav ul {flex-direction: column; gap: 10px; position: absolute; top: 70px; left: 0; width: 100%; background-color: #0f172a; display: none; padding: 20px 0;}
+      nav ul.show {display: flex;}
+      .dropdown-content {position: static; box-shadow: none; background-color: transparent;}
+    }
+    section {padding: 100px 20px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 1;}
+    section:nth-child(even) {background-color: rgba(18, 18, 18, 0.7);}
+    section:nth-child(odd) {background-color: rgba(10, 10, 10, 0.7);}
+    h1 {font-size: 4.5rem; color: #38bdf8; margin-bottom: 20px;}
+    h2 {font-size: 3rem; color: #38bdf8; margin-bottom: 20px;}
+    p {font-size: 1.5rem; max-width: 900px; color: #ffffff; line-height: 2; text-align: center;}
+    .btn {margin-top: 30px; padding: 15px 30px; background-color: #38bdf8; color: #0f172a; font-size: 1rem; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s; text-decoration: none;}
+    .btn:hover {background-color: #0ea5e9;}
+    .scroll-prompt {position: absolute; bottom: 20px; font-size: 1rem; color: #94a3b8; animation: bounce 2s infinite;}
+    @keyframes bounce {0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);}}
+  </style>
+</head>
+<body>
+  <div class="background-video-container">
+    <video autoplay muted loop id="background-video">
+      <source src="background.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
+  <nav>
+    <div class="logo-container">
+      <img src="logo.jpg" alt="Logo" />
+      <span>ReeMotedly</span>
+    </div>
+    <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('show')">☰</div>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li class="dropdown">
+        <span>Services ▾</span>
+        <div class="dropdown-content">
+          <a href="#managed-it">Managed IT Services</a>
+          <a href="#cloud">Cloud Workload Management</a>
+          <a href="#on-prem">On-Premise Support</a>
+          <a href="#web-dev">Web Design & Development</a>
+          <a href="#cyber">Cybersecurity</a>
+          <a href="#digital">Digital Marketing</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <span>Partners ▾</span>
+        <div class="dropdown-content">
+          <a href="#partners">Our Partners</a>
+          <a href="https://avncomputers.com" target="_blank">AVN Computers - Al Ain</a>
+        </div>
+      </li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <section id="home">
+    <h1>Welcome to ReeMotedly</h1>
+    <p>Your Trusted Partner for Remote IT Excellence</p>
+    <p>Remote IT support helps businesses reduce operational costs and improve performance. Let us manage your infrastructure 24/7, anywhere in the world.</p>
+    <a href="#contact" class="btn">Get Started</a>
+    <div class="scroll-prompt">↓ Scroll to explore</div>
+  </section>
+  <section id="managed-it">
+    <h2>Managed IT Services</h2>
+    <p>Proactive monitoring, maintenance, and support to keep your systems running efficiently.</p>
+  </section>
+  <section id="cloud">
+    <h2>Cloud Workload Management</h2>
+    <p>Seamlessly manage your cloud infrastructure with scalable and secure solutions.</p>
+  </section>
+  <section id="on-prem">
+    <h2>On-Premise Support</h2>
+    <p>Support for local servers, networks, and infrastructure to keep your business operational.</p>
+  </section>
+  <section id="web-dev">
+    <h2>Web Design & Development</h2>
+    <p>Custom, responsive, and beautiful websites designed to convert visitors into customers.</p>
+  </section>
+  <section id="cyber">
+    <h2>Cybersecurity</h2>
+    <p>Protect your business with top-tier cybersecurity tools, monitoring, and training.</p>
+  </section>
+  <section id="digital">
+    <h2>Digital Marketing</h2>
+    <p>Boost your digital presence through SEO, advertising, content, and social media strategies.</p>
+  </section>
+  <footer>
+    &copy; 2025 ReeMotedly. All rights reserved.<br />
+    <small>Website designed by ReeMotedly Web Team</small>
+  </footer>
+</body>
+</html>
